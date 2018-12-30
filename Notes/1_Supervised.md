@@ -105,7 +105,13 @@ df["height_normal"] = (df["height"] - df["height"].min()) /     \
 
 #### Algorithm
 
+**From Tricks:**
+
 ![image-20181219091352653](../img/image-20181219091352653-5182032.png)
+
+**From Error Function:**
+
+![image-20181222162216645](../img/image-20181222162216645-5466936.png)
 
 ### Lesson 4: Decision Tree
 
@@ -157,4 +163,154 @@ df["height_normal"] = (df["height"] - df["height"].min()) /     \
 **Simplified Conditional Probability:** $P(A|B)\propto P(B|A)P(A)$,  since $P(B)$ will be cancelled out
 
 ![image-20181221084854615](../img/image-20181221084854615-5353334.png)
+
+### Lesson 6: Support Vector Machine
+
+#### Error Function
+
+> Compared to percetron algorithm, SVM is considering margin around the separation line.
+>
+> Therefore, classification error is calculated from margin (not from separation line), and margin has its own error.
+
+##### Classification Error
+
+![image-20181222165920445](../img/image-20181222165920445-5469160.png)
+
+##### Margin Error
+
+> Error is defined as same as L2 regularization.
+>
+> The derivation of margin size is on [Udacity](https://classroom.udacity.com/nanodegrees/nd025/parts/c6a7e66b-64f6-41eb-9b3e-e068e0ed962b/modules/aea22017-a8fe-4902-ba79-0d79f161a6bb/lessons/deafd1ea-f773-4207-9193-23a4006c6f21/concepts/b4e94dac-84d1-4243-b0d2-f8f7c815d103).
+
+![image-20181222170445194](../img/image-20181222170445194-5469485.png)
+
+![image-20181222170555970](../img/image-20181222170555970-5469556.png)
+
+##### C Parameter
+
+![image-20181222170854106](../img/image-20181222170854106-5469734.png)
+
+#### Kernel Trick
+
+![image-20181224084301077](../img/image-20181224084301077-5612181.png)
+
+##### Polynomial Kernel
+
+![image-20181224084343966](../img/image-20181224084343966-5612224.png)
+
+##### RBF Kernel
+
+> Radio Basis Function Kernel
+
+![image-20181224125058899](../img/image-20181224125058899-5627058.png)
+
+**How to find out the combination of RBF:**
+
+![image-20181224125606935](../img/image-20181224125606935-5627366.png)
+
+**Hyperparameter: Gamma**
+
+![image-20181224125743390](../img/image-20181224125743390-5627463.png)
+
+### Lesson 7: Ensemble Methods
+
+> In order to optimize for both variance and bias, finding the best point between them.
+
+#### Bagging
+
+> Abbreviation for boostrap aggregating
+
+**Random Forest:** introduce randomness for both samples and features, and combine weak learner by voting directly
+
+#### Boosting
+
+![image-20181225082313087](../img/image-20181225082313087-5697393.png)
+
+**Weighting the data:** keep sum of weight of correct and incorrect points equal for every step, and the weight value is updated every step (not be reset)
+
+![image-20181225092905518](../img/image-20181225092905518-5701345.png)
+
+**Weighting the weak learner:** rely more on model whose accuracy is more towards 0 or 1 
+
+> [Combine all weighted weak learners](https://www.youtube.com/watch?v=1GxscvKU2Ic)
+
+![image-20181225093042565](../img/image-20181225093042565-5701442.png)
+
+### Lesson 8: Model Evaluation Metrics
+
+#### Confusion Matrix
+
+![image-20181226124727989](../img/image-20181226124727989-5799648.png)
+
+#### Accuracy
+
+$ (TP + TN) / All $
+
+**When accuracy won't work:** very skewed labels --> model tend to not catch any minors but still has good accuracy
+
+![image-20181226125516368](../img/image-20181226125516368-5800116.png)
+
+#### Precision
+
+> How many **predicted** positive cases is correct
+
+![image-20181228130742337](../img/image-20181228130742337-5973662.png)
+
+#### Recall
+
+> How many **actual** positive cases are caught
+
+![image-20181228130810170](../img/image-20181228130810170-5973690.png)
+
+#### F1 Score
+
+> Combine precision and recall with harmonic mean, which is close to the lower one
+
+![image-20181229173645673](../img/image-20181229173645673-6076205.png)
+
+#### F-beta Score
+
+> More general form of F1 score
+
+![image-20181229174250407](../img/image-20181229174250407-6076570.png)
+
+#### ROC Curve & AUC
+
+> Receiver Operating Characteristic
+
+True Positive Rate  vs.  False Positive Rate
+
+![image-20181230104927298](../img/image-20181230104927298-6138167.png)
+
+#### Regression Metrics
+
+**Mean Absolute Error**, **Mean Square Error**
+
+**R2 Score: ** compare model to simpliest possible model
+
+![image-20181230105345780](../img/image-20181230105345780-6138425.png)
+
+### Lesson 9: Training and Tuning
+
+#### Bias and Variance Trade-off
+
+![image-20181230121959684](../img/image-20181230121959684-6143599.png)
+
+#### Model Complexity Graph
+
+>For model selection  (making decision)
+>
+> > Do not use test set to make decision because it is a kind of training. --> Using validation data in cross-validation
+
+![image-20181230122815863](../img/image-20181230122815863-6144095.png)
+
+#### Learning Curve
+
+> For model selection also  (making decision)
+
+![image-20181230124003413](../img/image-20181230124003413-6144803.png)
+
+#### Grid Search
+
+![image-20181230220255823](../img/image-20181230220255823-6178575.png)
 
